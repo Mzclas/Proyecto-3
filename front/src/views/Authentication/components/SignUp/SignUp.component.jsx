@@ -12,7 +12,7 @@ import { Icon } from "@mdi/react";
 import { mdiAccountPlus } from "@mdi/js";
 
 function SignUp(props) {
-  const { classes } = props;
+  const { classes, toggle } = props;
 
   return (
     <>
@@ -55,6 +55,18 @@ function SignUp(props) {
           Sign Up
         </Button>
       </form>
+      <div className={classes.subButtom}>
+        <label htmlFor="outlined-button-login">
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            onClick={toggle}
+          >
+            LogIn
+          </Button>
+        </label>
+      </div>
     </>
   );
 }

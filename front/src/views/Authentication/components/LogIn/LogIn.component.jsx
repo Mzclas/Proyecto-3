@@ -13,7 +13,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { styles } from "./LogIn.styles";
 
 function LogIn(props) {
-  const { classes } = props;
+  const { classes, toggle } = props;
 
   return (
     <>
@@ -51,6 +51,18 @@ function LogIn(props) {
           Log In
         </Button>
       </form>
+      <div className={classes.subButtom}>
+        <label htmlFor="outlined-button-login">
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            onClick={toggle}
+          >
+            LogIn
+          </Button>
+        </label>
+      </div>
     </>
   );
 }
