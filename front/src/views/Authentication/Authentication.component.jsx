@@ -9,28 +9,15 @@ import SignUp from "./components/SignUp/SignUp.component";
 class Authentication extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLogin: true
-    };
-
-    this.toggleIsLogin = this.toggleIsLogin.bind(this);
-  }
-
-  toggleIsLogin() {
-    this.setState({ isLogin: !this.state.isLogin });
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, isLogin } = this.props;
     return (
       <div className={classes.container}>
         <main className={classes.main}>
           <Paper className={classes.paper}>
-            {this.state.isLogin ? (
-              <LogIn toggle={this.toggleIsLogin} />
-            ) : (
-              <SignUp toggle={this.toggleIsLogin} />
-            )}
+            {isLogin ? <LogIn /> : <SignUp />}
           </Paper>
         </main>
       </div>
@@ -39,7 +26,8 @@ class Authentication extends React.Component {
 }
 
 Authentication.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  isLogin: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(Authentication);
