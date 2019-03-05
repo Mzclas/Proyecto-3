@@ -54,7 +54,7 @@ class SignUp extends Component {
   render() {
     const { classes } = this.props;
     const { name, surname, email, password } = this.state;
-    return this.state.redirect == false ? (
+    return !this.state.redirect ? (
       <>
         <Avatar className={classes.avatar}>
           <Icon path={mdiAccountPlus} size={1} color="white" />

@@ -12,13 +12,13 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { styles } from "./LogIn.styles";
 import AuthService from "../../auth-service";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, Redirect } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 
 class LogIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "" };
+    this.state = { email: "", password: "", redirect: false };
     this.service = new AuthService();
   }
 
@@ -36,7 +36,8 @@ class LogIn extends Component {
       .then(response => {
         this.setState({
           email: "",
-          password: ""
+          password: "",
+          redirect: false
         });
         // this.props.getUser(response)
       })
@@ -46,7 +47,7 @@ class LogIn extends Component {
   render() {
     const { classes } = this.props;
     const { email, password } = this.state;
-    return (
+    return !this.state.redirect ? (
       <>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -97,6 +98,8 @@ class LogIn extends Component {
           </Link>
         </div>
       </>
+    ) : (
+      <Redirect to="/" />
     );
   }
 }

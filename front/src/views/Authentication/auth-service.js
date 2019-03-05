@@ -15,7 +15,6 @@ export default class AuthService {
       .then(response => response.data);
   };
   login = (email, password) => {
-    console.log(email, password);
     return this.service
       .post("/auth/login", { email, password })
       .then(response => response.data);
