@@ -22,7 +22,7 @@ const PLANT_TYPES = [
   "Watermelon"
 ];
 
-const TRAY_TYPES = ["54", "104", "150", "294", "726", "1066"];
+const TRAY_TYPES = [54, 104, 150, 294, 726, 1066];
 
 const PLANT_OPTIONS = PLANT_TYPES.map(plantType => ({
   value: plantType.toLowerCase(),
@@ -30,7 +30,7 @@ const PLANT_OPTIONS = PLANT_TYPES.map(plantType => ({
 }));
 
 const TRAY_OPTIONS = TRAY_TYPES.map(trayType => ({
-  value: trayType.toLowerCase(),
+  value: trayType,
   label: trayType
 }));
 

@@ -55,7 +55,7 @@ class MenuBar extends React.Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Logout</MenuItem>
       </Menu>
     );
 
@@ -109,7 +109,7 @@ class MenuBar extends React.Component {
               color="inherit"
               noWrap
             >
-              Material-UI
+              Tu Gestor
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -126,12 +126,12 @@ class MenuBar extends React.Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={1} color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>
               <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
+                <Badge badgeContent={1} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>

@@ -3,6 +3,7 @@ import { CssBaseline } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
 import Authentication from "./views/Authentication/Authentication.component";
 import Dashboard from "./views/Dashboard/Dashboard.component";
+import OrdersList from "./views/OrderList/OrderList";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             render={() => <Authentication isLogin={true} />}
           />
           <Route exact path="/" component={Dashboard} />
+          <Route exact path="/list" component={OrdersList} />
         </Switch>
       </>
     );

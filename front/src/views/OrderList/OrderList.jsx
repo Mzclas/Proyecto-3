@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { styles } from "./OrderList.styles";
+import MenuBar from "../Dashboard/components/MenuBar/MenuBar.component";
 
 let id = 0;
 function createData(
@@ -33,32 +34,35 @@ function SimpleTable(props) {
   const { classes } = props;
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Tomiplant Pedidos:</TableCell>
-            <TableCell align="right">Tipo</TableCell>
-            <TableCell align="right">Variedad</TableCell>
-            <TableCell align="right">Total semillas</TableCell>
-            <TableCell align="right">Bandeja</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.CustomerName}
-              </TableCell>
-              <TableCell align="right">{row.plantType}</TableCell>
-              <TableCell align="right">{row.plantVariety}</TableCell>
-              <TableCell align="right">{row.totalSeeds}</TableCell>
-              <TableCell align="right">{row.trayType}</TableCell>
+    <>
+      <MenuBar />
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Tomiplant Pedidos:</TableCell>
+              <TableCell align="right">Tipo</TableCell>
+              <TableCell align="right">Variedad</TableCell>
+              <TableCell align="right">Total semillas</TableCell>
+              <TableCell align="right">Bandeja</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
+          </TableHead>
+          <TableBody>
+            {rows.map(row => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.CustomerName}
+                </TableCell>
+                <TableCell align="right">{row.plantType}</TableCell>
+                <TableCell align="right">{row.plantVariety}</TableCell>
+                <TableCell align="right">{row.totalSeeds}</TableCell>
+                <TableCell align="right">{row.trayType}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
+    </>
   );
 }
 
