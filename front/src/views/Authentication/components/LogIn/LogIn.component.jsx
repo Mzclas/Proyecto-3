@@ -14,11 +14,19 @@ import { styles } from "./LogIn.styles";
 import AuthService from "../../auth-service";
 import { Link as RouterLink, Redirect } from "react-router-dom";
 import Link from "@material-ui/core/Link";
+import Popup from "../../../../components/Popup/Popup.component";
+
+const HTTP_UNAUTHORIZED = 401;
 
 class LogIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", redirect: false };
+    this.state = {
+      email: "",
+      password: "",
+      showError: false,
+      redirect: false
+    };
     this.service = new AuthService();
   }
 
@@ -26,6 +34,7 @@ class LogIn extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+
   handleFormSubmit = event => {
     event.preventDefault();
     const email = this.state.email;
@@ -37,16 +46,28 @@ class LogIn extends Component {
         this.setState({
           email: "",
           password: "",
-          redirect: false
+          redirect: true
         });
         // this.props.getUser(response)
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        if (error.response.status === HTTP_UNAUTHORIZED) {
+          this.setState({ showError: true });
+        }
+        console.log(error);
+      });
+  };
+
+  handleCloseErrorPopup = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    this.setState({ showError: false });
   };
 
   render() {
     const { classes } = this.props;
-    const { email, password } = this.state;
+    const { email, password, showError } = this.state;
     return !this.state.redirect ? (
       <>
         <Avatar className={classes.avatar}>
@@ -97,6 +118,12 @@ class LogIn extends Component {
             or create an account
           </Link>
         </div>
+        <Popup
+          open={showError}
+          onClose={this.handleCloseErrorPopup}
+          variant="warning"
+          message="Incorrect username or password"
+        />
       </>
     ) : (
       <Redirect to="/" />

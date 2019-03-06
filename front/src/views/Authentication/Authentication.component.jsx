@@ -7,10 +7,6 @@ import LogIn from "./components/LogIn/LogIn.component";
 import SignUp from "./components/SignUp/SignUp.component";
 
 class Authentication extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     const { classes, isLogin } = this.props;
     return (

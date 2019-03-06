@@ -5,9 +5,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 
+import { MuiPickersUtilsProvider } from "material-ui-pickers";
+import LuxonUtils from "@date-io/luxon";
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <MuiPickersUtilsProvider utils={LuxonUtils}>
+      <App />
+    </MuiPickersUtilsProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
