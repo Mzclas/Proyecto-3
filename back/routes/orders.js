@@ -9,4 +9,10 @@ router.post("/", (req, res, next) => {
   });
 });
 
+router.get("/", (req, res, next) => {
+  Order.find({}).then(orders => {
+    res.json(orders);
+  });
+});
+
 module.exports = router;
