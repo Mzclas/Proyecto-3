@@ -126,7 +126,7 @@ class LogIn extends Component {
         />
       </>
     ) : (
-      <Redirect to="/" />
+      <Redirect to="/home" />
     );
   }
 }

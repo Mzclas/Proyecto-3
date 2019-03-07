@@ -1,18 +1,4 @@
-import background from "../../assets/images/fondo.jpg";
-
-const gradientOpacity = 0.9;
 export const styles = theme => ({
-  container: {
-    overflow: "auto",
-    minHeight: "100vh",
-    backgroundImage:
-      `linear-gradient(` +
-      `rgba(255,255,255,${gradientOpacity}), ` +
-      `rgba(255,255,255,${gradientOpacity})` +
-      `), url(${background})`,
-    backgroundSize: "cover",
-    paddingTop: theme.spacing.unit * 8
-  },
   main: {
     width: "auto",
     display: "block", // Fix IE 11 issue.
