@@ -13,4 +13,7 @@ export default class OrdersService {
       .post("/orders", { trayType, plantType, orderDate, deliveryDate })
       .then(response => response.data);
   };
+  get = () => {
+    return this.service.get("/orders").then(response => response.data);
+  };
 }

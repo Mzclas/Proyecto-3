@@ -1,18 +1,19 @@
-import Axios from "axios";
 import React, { Component } from "react";
 import VirtualizedTable from "./components/VirtualizedTable/VirtualizedTable.component";
+import OrdersService from "../../../../orders-service";
 
 export default class OrderTable extends Component {
-  state = {
-    orders: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: []
+    };
+    this.service = new OrdersService();
+  }
 
   componentDidMount() {
-    Axios.get("http://localhost:5000/orders").then(orders => {
-      this.setState({
-        ...this.state,
-        orders: orders.data
-      });
+    this.service.get().then(orders => {
+      this.setState({ ...this.state, orders });
     });
   }
 
