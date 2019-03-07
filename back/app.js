@@ -36,6 +36,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 
 // Enable authentication using session + passport
 app.use(
@@ -56,5 +57,9 @@ app.use("/auth", authRoutes);
 
 const ordersRoutes = require("./routes/orders");
 app.use("/orders", ordersRoutes);
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 module.exports = app;
