@@ -8,10 +8,6 @@ import { styles } from "./OrderList.styles";
 import OrderTable from "./components/OrderTable/OrderTable.component";
 
 class OrderList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { classes } = this.props;
     return (

@@ -49,10 +49,6 @@ app.use(
 );
 require("./passport")(app);
 
-app.use((req, res, next) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 const index = require("./routes/index");
 app.use("/", index);
 
@@ -61,5 +57,9 @@ app.use("/auth", authRoutes);
 
 const ordersRoutes = require("./routes/orders");
 app.use("/orders", ordersRoutes);
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 module.exports = app;

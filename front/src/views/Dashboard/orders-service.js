@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BACK_URL = "http://localhost:5000/";
+import { BACK_URL } from "../../api";
 
 export default class OrdersService {
   constructor() {

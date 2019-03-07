@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CssBaseline } from "@material-ui/core";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Authentication from "./views/Authentication/Authentication.component";
 import Dashboard from "./views/Dashboard/Dashboard.component";
 
@@ -10,6 +10,7 @@ class App extends Component {
       <>
         <CssBaseline />
         <Switch>
+          <Route exact path="/" render={() => <Redirect to="/login" />} />
           <Route
             exact
             path="/signup"
