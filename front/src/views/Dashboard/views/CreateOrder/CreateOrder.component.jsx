@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { string, number } from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import { DatePicker } from "material-ui-pickers";
-
 import { styles } from "./CreateOrder.styles";
 import OrdersService from "../../orders-service";
 import Popup from "../../../../components/Popup/Popup.component";
@@ -38,6 +37,8 @@ const initialState = {
   deliveryDate: new Date(),
   plantType: PLANT_OPTIONS[0].value,
   trayType: TRAY_OPTIONS[0].value,
+  totalSeeds: new Number(),
+  notes: new String(),
   showError: false,
   showSuccess: false
 };
@@ -63,10 +64,24 @@ class CreateOrder extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { trayType, plantType, orderDate, deliveryDate } = this.state;
+    const {
+      orderDate,
+      deliveryDate,
+      plantType,
+      trayType,
+      totalSeeds,
+      notes
+    } = this.state;
 
     this.service
-      .create({ trayType, plantType, orderDate, deliveryDate })
+      .create({
+        orderDate,
+        deliveryDate,
+        plantType,
+        trayType,
+        totalSeeds,
+        notes
+      })
       .then(response => {
         this.setState({ ...initialState, showSuccess: true });
       })
@@ -96,6 +111,8 @@ class CreateOrder extends React.Component {
       deliveryDate,
       plantType,
       trayType,
+      totalSeeds,
+      notes,
       showError,
       showSuccess
     } = this.state;
@@ -153,6 +170,26 @@ class CreateOrder extends React.Component {
                   </MenuItem>
                 ))}
               </TextField>
+              {/* &&&&&&&&&&&&&&&&&&&&&------------------------------------&&&&&&&&&&&&&&&&&&&& */}
+              <TextField
+                value=""
+                onChange=""
+                fullWidth
+                label="Total Seeds"
+                value={totalSeeds}
+                helperText="Seeds"
+                margin="normal"
+              />
+
+              <TextField
+                value=""
+                onChange=""
+                fullWidth
+                label="Notes"
+                value={notes}
+                helperText="Aditional Notes"
+                margin="normal"
+              />
               <Button
                 type="submit"
                 fullWidth
