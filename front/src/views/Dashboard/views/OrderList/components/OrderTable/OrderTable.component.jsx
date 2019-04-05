@@ -19,34 +19,50 @@ export default class OrderTable extends Component {
 
   render() {
     const { orders } = this.state;
+    for (let order of orders) {
+      order.approximateTrays = (order.totalSeeds / order.trayType).toFixed(2);
+    }
+
     return (
       <VirtualizedTable
         rowCount={orders.length}
         rowGetter={({ index }) => orders[index]}
         columns={[
           {
-            width: 200,
+            width: 120,
             flexGrow: 1.0,
             label: "Type",
             dataKey: "plantType"
           },
           {
-            width: 120,
+            width: 100,
+            label: "Total Seeds",
+            dataKey: "totalSeeds",
+            numeric: true
+          },
+          {
+            width: 100,
             label: "Trays type",
             dataKey: "trayType",
             numeric: true
           },
           {
-            width: 120,
+            width: 100,
             label: "Order date",
             dataKey: "orderDate",
             cellContentRenderer: ({ cellData }) => formatDate(cellData)
           },
           {
-            width: 120,
+            width: 100,
             label: "Delivery date",
             dataKey: "deliveryDate",
             cellContentRenderer: ({ cellData }) => formatDate(cellData)
+          },
+          {
+            width: 100,
+            label: "Approximate Trays",
+            dataKey: "approximateTrays",
+            numeric: true
           }
         ]}
       />

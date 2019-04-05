@@ -8,9 +8,23 @@ export default class OrdersService {
       // withCredentials: true
     });
   }
-  create = ({ trayType, plantType, orderDate, deliveryDate }) => {
+  create = ({
+    trayType,
+    plantType,
+    orderDate,
+    deliveryDate,
+    totalSeeds,
+    notes
+  }) => {
     return this.service
-      .post("/orders", { trayType, plantType, orderDate, deliveryDate })
+      .post("/orders", {
+        trayType,
+        plantType,
+        orderDate,
+        deliveryDate,
+        totalSeeds,
+        notes
+      })
       .then(response => response.data);
   };
   get = () => {

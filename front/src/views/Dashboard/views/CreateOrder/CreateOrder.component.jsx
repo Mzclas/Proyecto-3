@@ -37,8 +37,8 @@ const initialState = {
   deliveryDate: new Date(),
   plantType: PLANT_OPTIONS[0].value,
   trayType: TRAY_OPTIONS[0].value,
-  totalSeeds: new Number(),
-  notes: new String(),
+  totalSeeds: 0,
+  notes: "",
   showError: false,
   showSuccess: false
 };
@@ -173,7 +173,7 @@ class CreateOrder extends React.Component {
               {/* &&&&&&&&&&&&&&&&&&&&&------------------------------------&&&&&&&&&&&&&&&&&&&& */}
               <TextField
                 value=""
-                onChange=""
+                onChange={this.handleChange("totalSeeds")}
                 fullWidth
                 label="Total Seeds"
                 value={totalSeeds}
@@ -183,7 +183,7 @@ class CreateOrder extends React.Component {
 
               <TextField
                 value=""
-                onChange=""
+                onChange={this.handleChange("notes")}
                 fullWidth
                 label="Notes"
                 value={notes}
