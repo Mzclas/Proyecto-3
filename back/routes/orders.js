@@ -3,8 +3,22 @@ const router = express.Router();
 const Order = require("../models/Order");
 
 router.post("/", (req, res, next) => {
-  const { trayType, plantType, orderDate, deliveryDate } = req.body;
-  Order.create({ trayType, plantType, orderDate, deliveryDate }).then(order => {
+  const {
+    orderDate,
+    deliveryDate,
+    plantType,
+    trayType,
+    totalSeeds,
+    notes
+  } = req.body;
+  Order.create({
+    orderDate,
+    deliveryDate,
+    plantType,
+    trayType,
+    totalSeeds,
+    notes
+  }).then(order => {
     res.json(order);
   });
 });

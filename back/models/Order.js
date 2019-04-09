@@ -5,14 +5,15 @@ const orderSchema = new Schema({
   id: Number,
   // userId: { type: Schema.Types.UserId, ref: "User" },
   // customerId: { type: Schema.Types.CustomerId, ref: "Customer" },
-  // notes: String,
+  notes: String,
   orderDate: Date,
   deliveryDate: Date,
   plantType: String,
   // plantVariety: String,
-  // totalSeeds: Number,
-  trayType: Number
+  totalSeeds: Number,
+  trayType: Number,
   // plantedTrays: Number,
+  approximateTrays: Number
   // totalTrays: Number,
   // deliveredTrays: Number,
   // state: String
